@@ -35,5 +35,15 @@ public class Main {
         } else {
             System.err.println("Login Gagal");
         }
+
+        Pengguna gantiPassword = new Pengguna();
+        gantiPassword.setUsername("user2");
+        gantiPassword.setPassword("pwbaru");
+
+        if (gantiPassword.updatePassword("user2")){
+            System.out.println("Password berhasil diperbarui");
+        } else {
+            System.err.println("Gagal Memperbarui");
+        }
     }
 }

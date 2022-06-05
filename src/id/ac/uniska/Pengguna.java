@@ -143,7 +143,45 @@ public class Pengguna {
         }
         return hasil;
     }
-    public void updatePassword(){}
+    public boolean updatePassword(String passwordLama) {
+        boolean passwordlamabenar;
+        boolean hasil = false;
+//        String cariSQL = "SELECT * FROM pengguna WHERE username = ? AND password = ?";
+        String cariSQL = "SELECT * FROM pengguna WHERE username=? AND password = MD5(?)";
+
+        MyConnection m = new MyConnection();
+        this.connection = m.getConnection();
+        try {
+            PreparedStatement preparedStatement = this.connection.prepareStatement(cariSQL);
+            preparedStatement.setString(1, this.username);
+            preparedStatement.setString(2, passwordLama);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            passwordlamabenar = false;
+            while (resultSet.next()) {
+                passwordlamabenar = true;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (passwordlamabenar) {
+            String updateSQL = "UPDATE `pengguna` SET `password` = MD5(?) WHERE `pengguna`.`username` = ? ";
+            try {
+                PreparedStatement preparedStatement = this.connection.prepareStatement(updateSQL);
+                preparedStatement.setString(1, this.password);
+                preparedStatement.setString(2, this.username);
+                preparedStatement.execute();
+
+                System.out.println("Berhasil Memperbarui Password");
+                hasil = true;
+            } catch (SQLException e) {
+                System.out.println("Password Yang diperbarui ERROR!");
+            }
+        }
+        return hasil;
+    }
     public void resetPassword(){}
 
     public int getId() {
