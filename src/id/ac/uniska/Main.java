@@ -2,6 +2,8 @@ package id.ac.uniska;
 
 import helper.MyConnection;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,6 +11,10 @@ public class Main {
 //        m.getConnection();
 
         Pengguna pengguna = new Pengguna();
-        pengguna.read();
+        ArrayList<Pengguna> listPengguna = pengguna.read();
+
+        for (Pengguna value: listPengguna){
+            System.out.println(value.getNamaLengkap());
+        }
     }
 }
