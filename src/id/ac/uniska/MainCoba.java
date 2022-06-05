@@ -4,7 +4,7 @@ import helper.MyConnection;
 
 import java.util.ArrayList;
 
-public class Main {
+public class MainCoba {
 
     public static void main(String[] args) {
 //        MyConnection m = new MyConnection();
