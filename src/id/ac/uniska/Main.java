@@ -1,8 +1,11 @@
 package id.ac.uniska;
 
+import helper.MyConnection;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        MyConnection m = new MyConnection();
+        m.getConnection();
     }
 }
