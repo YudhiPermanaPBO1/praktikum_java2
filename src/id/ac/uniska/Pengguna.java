@@ -99,7 +99,22 @@ public class Pengguna {
             System.out.println("Data Yang diperbarui ERROR!");
         }
     }
-    public void delete(){}
+
+    public void delete(){
+        String deleteSQL = "DELETE FROM `pengguna` WHERE `pengguna`.`id` = ? ";
+
+        MyConnection m = new MyConnection();
+        this.connection = m.getConnection();
+        try {
+            PreparedStatement preparedStatement = this.connection.prepareStatement(deleteSQL);
+            preparedStatement.setInt(1, this.id);
+            preparedStatement.execute();
+
+            System.out.println("Berhasil Menghapus Data");
+        } catch (SQLException e) {
+            System.out.println("Data Yang dihapus ERROR!");
+        }
+    }
 
     public void login(){}
     public void updatePassword(){}
