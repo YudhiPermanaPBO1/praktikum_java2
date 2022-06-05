@@ -29,7 +29,22 @@ public class Pengguna {
     }
 
     //CRUD create read update delete
-    public void create(){}
+    public void create(){
+        String createSQL = "INSERT INTO `pengguna` (`id`, `username`, `password`, `namalengkap`, `level`) " +
+                "VALUES " +
+                "(NULL, '"+this.username+"', MD5('"+this.password+"'), '"+this.namaLengkap+"', '"+this.level+"')";
+
+        MyConnection m = new MyConnection();
+        this.connection = m.getConnection();
+        try {
+        Statement statement = this.connection.createStatement();
+        statement.execute(createSQL);
+            System.out.println("Berhasil Membuat Data");
+        } catch (SQLException e) {
+            System.out.println("Data Yang dimasukkan ERROR!");
+        }
+
+    }
     public ArrayList<Pengguna> read(){
         MyConnection m = new MyConnection();
         this.connection = m.getConnection();
