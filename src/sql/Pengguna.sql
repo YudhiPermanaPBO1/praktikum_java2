@@ -1,0 +1,1 @@
+CREATE TABLE `212praktikumjava2`.`pengguna` ( `id` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , `namalengkap` VARCHAR(255) NOT NULL , `level` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
